@@ -91,7 +91,8 @@ function calculateUpcomingEvents(
   const currentCycleNumber = Math.floor(elapsedMinutes / totalCycleTime);
   
   // Look ahead for events within the time window
-  for (let i = 0; i < (hours * 60) / totalCycleTime + DEEP_SEA_HUB_EVENTS.length; i++) {
+  const maxIterations = Math.ceil((hours * 60) / totalCycleTime) + DEEP_SEA_HUB_EVENTS.length;
+  for (let i = 0; i < maxIterations; i++) {
     const cycleNumber = currentCycleNumber + Math.floor(i / DEEP_SEA_HUB_EVENTS.length) + 1;
     const eventIndex = i % DEEP_SEA_HUB_EVENTS.length;
     

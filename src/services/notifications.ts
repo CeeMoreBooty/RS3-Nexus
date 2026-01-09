@@ -81,10 +81,22 @@ export function showNotification(title: string, body: string, icon?: string): vo
 /**
  * Play notification sound
  */
+// Type declaration for webkit audio context
+declare global {
+  interface Window {
+    webkitAudioContext?: typeof AudioContext;
+  }
+}
+
 export function playNotificationSound(): void {
   // Simple beep using Web Audio API
   try {
-    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) {
+      console.warn('AudioContext not supported');
+      return;
+    }
+    const audioContext = new AudioContextClass();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
     

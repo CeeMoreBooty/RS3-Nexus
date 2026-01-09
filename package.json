@@ -1,7 +1,7 @@
 {
   "name": "rs3-nexus",
   "version": "1.0.0",
-  "description": "A Enhanced Version Of Alt1 -For Runescape 3",
+  "description": "An Enhanced Version Of Alt1 - For RuneScape 3",
   "type": "module",
   "scripts": {
     "dev": "vite",

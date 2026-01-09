@@ -1,0 +1,7 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="32" fill="#1a1a2e"/>
+  <path d="M128 40L220 100V160L128 220L36 160V100L128 40Z" fill="#16213e" stroke="#0f3460" stroke-width="4"/>
+  <path d="M128 80L180 110V150L128 180L76 150V110L128 80Z" fill="#0f3460" stroke="#e94560" stroke-width="3"/>
+  <circle cx="128" cy="128" r="25" fill="#e94560"/>
+  <text x="128" y="240" font-family="Arial" font-size="24" font-weight="bold" fill="#e94560" text-anchor="middle">RS3-NEXUS</text>
+</svg>

@@ -59,6 +59,16 @@ npm run dev
 
 4. Open your browser and navigate to `http://localhost:5173`
 
+### Demo Mode
+
+For testing without API access, enable demo mode by creating/editing `.env`:
+
+```bash
+VITE_DEMO_MODE=true
+```
+
+Demo mode uses mock data for 5 sample items. Remove the file or set to `false` for production.
+
 ### Building for Production
 
 ```bash

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -35,16 +35,16 @@ function PriceChart({ itemName, days }: PriceChartProps) {
   const [history, setHistory] = useState<PriceHistory[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadHistory();
-  }, [itemName, days]);
-
-  const loadHistory = async () => {
+  const loadHistory = useCallback(async () => {
     setLoading(true);
     const data = await priceService.getPriceHistory(itemName, days);
     setHistory(data);
     setLoading(false);
-  };
+  }, [itemName, days]);
+
+  useEffect(() => {
+    loadHistory();
+  }, [loadHistory]);
 
   if (loading) {
     return <div className="spinner" style={{ margin: '2rem auto' }}></div>;

@@ -6,7 +6,8 @@ class PriceService {
   private cache: Map<string, { data: ItemPrice; timestamp: number }> = new Map();
   private cacheTimeout = 5 * 60 * 1000; // 5 minutes
   private alerts: PriceAlert[] = [];
-  private wsConnection: WebSocket | null = null;
+  // WebSocket connection for real-time updates (placeholder for future implementation)
+  // private wsConnection: WebSocket | null = null;
 
   // Get current item price with caching
   async getPrice(itemName: string): Promise<ItemPrice | null> {
@@ -42,14 +43,13 @@ class PriceService {
   }
 
   // Get price history
-  async getPriceHistory(itemName: string, days: number): Promise<PriceHistory[]> {
+  async getPriceHistory(_itemName: string, days: number): Promise<PriceHistory[]> {
     try {
-      const endDate = new Date();
-      const startDate = new Date();
-      startDate.setDate(startDate.getDate() - days);
-
       // Simulate history data - replace with real API call
       const history: PriceHistory[] = [];
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - days);
+      
       for (let i = 0; i < days; i++) {
         const date = new Date(startDate);
         date.setDate(date.getDate() + i);

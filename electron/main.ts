@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
-import * as isDev from 'electron-is-dev';
+
+const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -49,15 +50,18 @@ app.on('activate', () => {
 // IPC handlers for services
 ipcMain.handle('get-price', async (_, itemName: string) => {
   // Price service will be implemented
+  console.log('Price requested for:', itemName);
   return { itemName, price: 0 };
 });
 
 ipcMain.handle('solve-clue', async (_, clueText: string) => {
   // Clue solver will be implemented
+  console.log('Clue to solve:', clueText);
   return { solution: 'Unknown' };
 });
 
 ipcMain.handle('search-wiki', async (_, query: string) => {
   // Wiki search will be implemented
+  console.log('Wiki search for:', query);
   return { results: [] };
 });

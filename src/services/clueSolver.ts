@@ -151,7 +151,7 @@ class ClueSolverService {
   }
 
   // Solve puzzle box (calls Web Worker for complex solving)
-  async solvePuzzleBox(puzzleState: number[][]): Promise<string[]> {
+  async solvePuzzleBox(_puzzleState: number[][]): Promise<string[]> {
     // This would use a Web Worker for A* solving
     // Returning simplified solution for now
     return [

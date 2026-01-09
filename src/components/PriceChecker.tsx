@@ -3,7 +3,7 @@
  * Main component for searching and displaying item prices
  */
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { apiService } from '../services/apiService';
 import type { Item, ItemPrice } from '../types/api';
 import { formatPrice, formatTimeAgo, debounce } from '../utils/helpers';
@@ -56,11 +56,17 @@ export const PriceChecker: React.FC = () => {
     }
   }, []);
 
+  // Create debounced version using useMemo
+  const debouncedSearch = useMemo(
+    () => debounce(performSearch, SEARCH_DEBOUNCE_DELAY),
+    [performSearch]
+  );
+
   // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setSearchQuery(query);
-    debounce(performSearch, SEARCH_DEBOUNCE_DELAY)(query);
+    debouncedSearch(query);
   };
 
   // Handle item selection

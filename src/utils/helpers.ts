@@ -67,11 +67,19 @@ export function calculatePriceTrend(history: PriceHistory): PriceTrend {
 
 /**
  * Calculate margin between buy and sell prices
+ * In RS3 GE: 
+ * - "high" is the highest buy offer (instant buy price for buyers)
+ * - "low" is the lowest sell offer (instant sell price for sellers)
+ * Margin represents the potential profit from placing a buy order at "low" 
+ * and sell order at "high" (market making strategy)
  */
 export function calculateMargin(buyPrice: number, sellPrice: number): {
   profit: number;
   profitPercent: number;
 } {
+  // buyPrice here is actually the "high" (what buyers pay instant)
+  // sellPrice here is actually the "low" (what sellers get instant)
+  // For flipping: buy from sellers (low), sell to buyers (high)
   const profit = buyPrice - sellPrice;
   const profitPercent = (profit / buyPrice) * 100;
 

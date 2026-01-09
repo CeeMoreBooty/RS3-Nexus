@@ -1,0 +1,412 @@
+.wiki-browser {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  min-height: 600px;
+}
+
+.wiki-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.search-section h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 60px;
+  background: white;
+  border: 2px solid #667eea;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.autocomplete-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.autocomplete-item:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-item:hover {
+  background: #f5f5ff;
+}
+
+.wiki-content {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-section {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-section h4 {
+  margin: 0 0 0.75rem 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.clear-btn-small {
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.3s;
+}
+
+.clear-btn-small:hover {
+  background: #ff5252;
+  color: white;
+  border-color: #ff5252;
+}
+
+.recent-list,
+.bookmarks-list,
+.quick-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.recent-item,
+.bookmark-item,
+.quick-link {
+  padding: 0.5rem 0.75rem;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.recent-item:hover,
+.bookmark-item:hover,
+.quick-link:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+  transform: translateX(3px);
+}
+
+.main-content {
+  min-height: 400px;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  gap: 1rem;
+}
+
+.search-results h3 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.result-card {
+  padding: 1.5rem;
+  background: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.result-card:hover {
+  border-color: #667eea;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.result-header h4 {
+  margin: 0;
+  color: #667eea;
+  font-size: 1.1rem;
+}
+
+.bookmark-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.bookmark-btn:hover {
+  transform: scale(1.2);
+}
+
+.result-excerpt {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0.75rem 0;
+  line-height: 1.5;
+}
+
+.external-link {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.external-link:hover {
+  text-decoration: underline;
+}
+
+.page-view {
+  background: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-header h3 {
+  margin: 0.5rem 0 0 0;
+  color: #333;
+  font-size: 1.75rem;
+}
+
+.back-btn {
+  padding: 0.5rem 1rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 0.5rem;
+}
+
+.back-btn:hover {
+  background: #5568d3;
+}
+
+.bookmark-btn-large {
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border: 2px solid #667eea;
+  color: #667eea;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.bookmark-btn-large:hover {
+  background: #667eea;
+  color: white;
+}
+
+.page-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.wiki-content-html {
+  line-height: 1.8;
+  color: #333;
+}
+
+.wiki-content-html h1,
+.wiki-content-html h2,
+.wiki-content-html h3 {
+  color: #667eea;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.wiki-content-html a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.wiki-content-html a:hover {
+  text-decoration: underline;
+}
+
+.wiki-content-html img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.wiki-content-html table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.wiki-content-html th,
+.wiki-content-html td {
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.wiki-content-html th {
+  background: #667eea;
+  color: white;
+  font-weight: 600;
+}
+
+.page-categories {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.page-categories h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.category-badge {
+  padding: 0.4rem 0.8rem;
+  background: #667eea;
+  color: white;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+}
+
+.empty-state h3 {
+  color: #667eea;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  display: inline-block;
+  text-align: left;
+}
+
+.features li {
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .wiki-content {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    order: 2;
+  }
+
+  .main-content {
+    order: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .wiki-browser {
+    padding: 1rem;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-view {
+    padding: 1rem;
+  }
+
+  .page-content {
+    padding: 1rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+  }
+}

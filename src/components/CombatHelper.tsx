@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { calculateDPS, calculateAbilityDamage, calculateCombatLevel, calculateMaxHit } from '../utils/calculators'
+import { calculateDPS, calculateCombatLevel } from '../utils/calculators'
 import { COMBAT_STYLES, BOSS_MECHANICS } from '../utils/constants'
 
 function CombatHelper() {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { database, Task } from '../services/database'
 import { notifications } from '../services/notifications'
-import { xpToLevel, levelToXp, xpToNextLevel, levelProgress, actionsToLevel } from '../utils/calculators'
+import { xpToLevel } from '../utils/calculators'
 import { SKILLS } from '../utils/constants'
 
 function TaskManager() {

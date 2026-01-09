@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'
 import { database, Task } from '../services/database'
-import { notifications } from '../services/notifications'
 
 function Dashboard() {
-  const [tasks, setTasks] = useState<Task[]>([])
   const [activeTasks, setActiveTasks] = useState<Task[]>([])
   const [completedToday, setCompletedToday] = useState(0)
   const [stats, setStats] = useState({
@@ -21,7 +19,6 @@ function Dashboard() {
       const allTasks = await database.getAllTasks()
       const active = await database.getTasksByStatus('active')
       
-      setTasks(allTasks)
       setActiveTasks(active)
       
       // Calculate stats

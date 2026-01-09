@@ -147,7 +147,7 @@ class ScreenCaptureService {
    * Read text from image (OCR placeholder)
    * In production, this would use an OCR library like Tesseract.js
    */
-  async readTextFromImage(imageData: string): Promise<string> {
+  async readTextFromImage(_imageData: string): Promise<string> {
     try {
       // Placeholder for OCR functionality
       // In production, would use Tesseract.js or similar

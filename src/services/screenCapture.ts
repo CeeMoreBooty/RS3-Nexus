@@ -45,17 +45,19 @@ class ScreenCaptureService {
     }
 
     try {
-      // Use browser screen capture API
-      const stream = await navigator.mediaDevices.getUserMedia({
+      // Use browser screen capture API with Electron-specific constraints
+      const constraints: MediaStreamConstraints = {
         audio: false,
         video: {
-          // @ts-ignore - chromeMediaSource is Electron-specific
+          // Electron-specific media source constraints
           mandatory: {
             chromeMediaSource: 'desktop',
             chromeMediaSourceId: this.selectedSourceId,
           }
-        }
-      })
+        } as any // Electron-specific types not in standard MediaStreamConstraints
+      }
+
+      const stream = await navigator.mediaDevices.getUserMedia(constraints)
 
       // Create video element to capture frame
       const video = document.createElement('video')

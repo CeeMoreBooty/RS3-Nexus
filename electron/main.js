@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, screen, desktopCapturer } from 'electron'
+import { app, BrowserWindow, ipcMain, screen, desktopCapturer, Notification } from 'electron'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -101,7 +101,6 @@ ipcMain.handle('get-screen-size', async () => {
 
 // Notification handler
 ipcMain.handle('show-notification', async (event, options) => {
-  const { Notification } = require('electron')
   if (Notification.isSupported()) {
     new Notification(options).show()
     return true

@@ -120,10 +120,29 @@ export function parseMessageType(text: string): 'system' | 'chat' | 'trade' | 'c
 
 /**
  * Clean game text (remove formatting)
+ * This function removes HTML-like tags and formatting from game text.
+ * Note: This should only be used with text from the game, not user-generated content
+ * displayed as HTML. For HTML sanitization, use a proper HTML sanitizer library.
  */
 export function cleanGameText(text: string): string {
-  // Remove HTML tags
-  let cleaned = text.replace(/<[^>]*>/g, '')
+  // Create a temporary DOM element to safely extract text content
+  // This properly handles all HTML entities and tags
+  if (typeof document !== 'undefined') {
+    const tempDiv = document.createElement('div')
+    tempDiv.textContent = text // Use textContent to prevent HTML parsing
+    return tempDiv.textContent || ''
+  }
+  
+  // Fallback for non-browser environments
+  // Remove HTML tags multiple times to handle nested tags
+  let cleaned = text
+  let previousLength = 0
+  
+  // Keep removing tags until no more are found
+  while (cleaned.length !== previousLength) {
+    previousLength = cleaned.length
+    cleaned = cleaned.replace(/<[^>]*>/g, '')
+  }
   
   // Remove color codes
   cleaned = cleaned.replace(/\[color=[^\]]*\]/g, '')

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { database, Task } from '../services/database'
 
 function Dashboard() {
+  const navigate = useNavigate()
   const [activeTasks, setActiveTasks] = useState<Task[]>([])
   const [completedToday, setCompletedToday] = useState(0)
   const [stats, setStats] = useState({
@@ -117,16 +119,16 @@ function Dashboard() {
         <div className="card">
           <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Quick Actions</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <button onClick={() => window.location.href = '/prices'}>
+            <button onClick={() => navigate('/prices')}>
               💰 Check Item Prices
             </button>
-            <button onClick={() => window.location.href = '/tasks'}>
+            <button onClick={() => navigate('/tasks')}>
               ✓ Manage Tasks
             </button>
-            <button onClick={() => window.location.href = '/combat'}>
+            <button onClick={() => navigate('/combat')}>
               ⚔️ Combat Calculator
             </button>
-            <button onClick={() => window.location.href = '/clues'}>
+            <button onClick={() => navigate('/clues')}>
               🗺️ Solve Clue Scroll
             </button>
           </div>

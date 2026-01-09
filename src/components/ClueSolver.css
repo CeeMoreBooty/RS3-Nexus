@@ -1,0 +1,368 @@
+.clue-solver {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.clue-solver-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.solver-section h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.solver-description {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.solve-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-item {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.clue-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+.clue-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.solve-button {
+  padding: 1rem 2rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.solve-button:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.examples-section {
+  margin-top: 1rem;
+}
+
+.examples-section h4 {
+  margin-bottom: 0.75rem;
+  color: #666;
+}
+
+.example-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.example-btn {
+  padding: 0.75rem 1rem;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.example-btn:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+  transform: translateX(5px);
+}
+
+.solution-section {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+}
+
+.solution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.solution-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.tracker-btn {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2ecc71;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.tracker-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+.solution-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.solution-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.solution-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.solution-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.solution-value.highlight {
+  font-size: 1.3rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.teleports-list,
+.requirements-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.teleport-badge,
+.requirement-badge {
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2ecc71;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.steps-list {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.steps-list li {
+  margin-bottom: 0.5rem;
+}
+
+.tracker-section {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.tracker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.tracker-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.clear-btn {
+  padding: 0.5rem 1rem;
+  background: #ff5252;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.clear-btn:hover {
+  background: #ff1744;
+}
+
+.tracker-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tracker-stat {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+.history-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.history-icon {
+  font-size: 1.5rem;
+}
+
+.history-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.history-type {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.history-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.history-reward {
+  font-weight: bold;
+  color: #2ecc71;
+}
+
+.features-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1.5rem;
+  border-radius: 8px;
+  color: white;
+}
+
+.features-section h3 {
+  margin-bottom: 1rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.5rem;
+}
+
+.features-list li {
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .clue-solver {
+    padding: 1rem;
+  }
+
+  .solve-stats,
+  .tracker-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .solution-header,
+  .tracker-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .features-list {
+    grid-template-columns: 1fr;
+  }
+}

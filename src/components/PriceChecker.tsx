@@ -18,6 +18,7 @@ export const PriceChecker: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
+  const demoMode = import.meta.env.VITE_DEMO_MODE === 'true';
 
   // Initialize API service
   useEffect(() => {
@@ -90,7 +91,7 @@ export const PriceChecker: React.FC = () => {
     await handleItemSelect(selectedItem);
   };
 
-  if (!isInitialized) {
+  if (!isInitialized && !error) {
     return (
       <div className="price-checker-container">
         <div className="loading">
@@ -101,11 +102,33 @@ export const PriceChecker: React.FC = () => {
     );
   }
 
+  if (!isInitialized && error) {
+    return (
+      <div className="price-checker-container">
+        <header className="price-checker-header">
+          <h1>RS3 Price Checker</h1>
+          <p className="subtitle">Real-time Grand Exchange prices from RuneScape Wiki</p>
+        </header>
+        <div className="error-message">
+          <span>⚠️ {error}</span>
+          <p style={{ marginTop: '1rem' }}>
+            This may be due to network restrictions or API unavailability.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="price-checker-container">
       <header className="price-checker-header">
         <h1>RS3 Price Checker</h1>
         <p className="subtitle">Real-time Grand Exchange prices from RuneScape Wiki</p>
+        {demoMode && (
+          <div className="demo-banner">
+            ⚠️ Demo Mode - Using sample data
+          </div>
+        )}
       </header>
 
       <div className="search-section">

@@ -1,6 +1,7 @@
 /**
  * API Service for fetching RuneScape 3 Grand Exchange data
  * Using Weird Gloop API (api.weirdgloop.org)
+ * Supports demo mode with mock data when VITE_DEMO_MODE=true
  */
 
 import type { 
@@ -14,11 +15,13 @@ import type {
 } from '../types/api';
 import { DAILYSCAPE_API, API_HEADERS } from '../utils/constants';
 import { CacheService } from './cacheService';
+import { getMockItemMappings, getMockPrice } from './mockData';
 
 class ApiService {
   private itemMappings: Map<number, Item> = new Map();
   private itemNameIndex: Map<string, number[]> = new Map();
   private mappingsLoaded = false;
+  private demoMode = import.meta.env.VITE_DEMO_MODE === 'true';
 
   /**
    * Fetch with retry logic
@@ -54,6 +57,25 @@ class ApiService {
    */
   async loadItemMappings(): Promise<void> {
     if (this.mappingsLoaded) return;
+
+    // Demo mode: use mock data
+    if (this.demoMode) {
+      const mockData = getMockItemMappings();
+      const items: Item[] = mockData.map(item => ({
+        id: item.id,
+        name: item.name,
+        description: item.examine,
+        members: item.members,
+        icon: item.icon,
+        examine: item.examine,
+        lowalch: item.lowalch,
+        highalch: item.highalch,
+        value: item.value,
+      }));
+      this.populateMappings(items);
+      this.mappingsLoaded = true;
+      return;
+    }
 
     // Try cache first
     const cached = CacheService.get<Item[]>('item_mappings');
@@ -123,6 +145,26 @@ class ApiService {
     const cached = CacheService.get<ItemPrice>(cacheKey);
     if (cached) {
       return cached;
+    }
+
+    // Demo mode: use mock data
+    if (this.demoMode) {
+      const mockPrice = getMockPrice(itemId);
+      if (!mockPrice) return null;
+
+      const item = this.itemMappings.get(itemId);
+      const itemPrice: ItemPrice = {
+        id: itemId,
+        name: item?.name || `Item ${itemId}`,
+        buyPrice: mockPrice.high,
+        sellPrice: mockPrice.low,
+        timestamp: new Date(mockPrice.highTime * 1000),
+        icon: item?.icon,
+        members: item?.members,
+      };
+
+      CacheService.set(cacheKey, itemPrice);
+      return itemPrice;
     }
 
     try {
